@@ -1,12 +1,17 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom"
-import Home from "./pages/Home"
+import MainPage from "./pages/MainPage"
+import UserDashboard from "./pages/UserDashboard"
+import AdminDashboard from "./pages/AdminDashboard"
+
 
 
 export default function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />}/>
+      <Route path="/" element={<MainPage />}/>
+      <Route path="/user" element={<UserDashboard/>}/>
+      <Route path="/admin" element={<AdminDashboard/>}/>
     </Routes>
     </BrowserRouter>
   )
