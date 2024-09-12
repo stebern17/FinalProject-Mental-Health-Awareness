@@ -22,7 +22,7 @@ export default function NewsSection() {
   return (
     <section>
       <div className="container mx-auto">
-        <h1 className="text-3xl font-bold my-5">Physiological News</h1>
+        <h1 className="text-3xl font-bold my-5 text-[#16423C]">Physiological News</h1>
         <Splide
           options={{
             type: 'loop',

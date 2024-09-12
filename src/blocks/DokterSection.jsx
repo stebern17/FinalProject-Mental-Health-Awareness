@@ -39,7 +39,7 @@ export default function DokterSection() {
     <>
     <section className='py-5'>
         <div className='container'>
-            <h1 className='text-3xl font-bold my-5'>Meet Our Doctor</h1>
+            <h1 className='text-3xl font-bold my-5 text-[#16423C]'>Meet Our Doctor</h1>
             <div className='grid grid-cols-3 gap-5'>
             {dokter.map((dokter, index) => (
             <DokterCardLP

@@ -35,7 +35,7 @@ export default function TestimoniSection() {
   return (
     <section>
         <div className='container'>
-        <h1 className='text-3xl font-bold my-5'>Testimoni</h1>
+        <h1 className='text-3xl font-bold my-5 text-[#16423C]'>Testimoni</h1>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
             {testimoni.map((testi, index) => (
                 <TestimoniCard key={index} testi={testi.testi} nama={testi.nama} date={testi.date}/>

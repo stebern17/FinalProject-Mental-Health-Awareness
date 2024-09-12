@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroImage from './../../public/HeroImage.svg'
-import BigButton from '../components/BigButton'
+import LightButton from '../components/LightButton'
 
 export default function HeroSection() {
   return (
@@ -16,7 +16,7 @@ export default function HeroSection() {
         dengan Gaya Hidupmu. Bersama, Kita Bisa Melewati Tantangan dan Membangun
         Kesejahteraan Mental yang Tangguh”
       </p>
-      <BigButton
+      <LightButton
         className="mt-8 md:mt-12 bg-white text-[#16423C] hover:bg-[#145c53] transition duration-300 ease-in-out text-xl rounded-full py-3 px-6 font-semibold"
         title={"Konsultasi Sekarang"}
       />

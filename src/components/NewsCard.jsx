@@ -1,5 +1,5 @@
 import React from 'react'
-import BigButton from './BigButton'
+import LightButton from './LightButton'
 
 export default function NewsCard({judul, deskripsi}) {
   return (
@@ -8,7 +8,7 @@ export default function NewsCard({judul, deskripsi}) {
         <div className="space-y-4">
           <h2 className="font-bold text-3xl">{judul}</h2>
           <p className="text-sm leading-relaxed">{deskripsi}</p>
-          <BigButton
+          <LightButton
             className="mt-8 py-2 px-6 bg-white text-[#6A9C89] rounded-md font-semibold hover:bg-[#5C8E7C] transition-colors duration-300"
             title="Baca Selengkapnya"
           />
