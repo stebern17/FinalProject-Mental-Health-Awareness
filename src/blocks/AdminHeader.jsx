@@ -58,7 +58,7 @@ export default function AdminHeader() {
     <img
       src={NotificationIcon}
       alt="Notification Icon"
-      className="hover:opacity-80 hover:scale-105 transition duration-200"
+      className="hover:opacity-80 hover:scale-105 transition duration-200 size-6"
       aria-label="Notifications"
     />
   </li>
@@ -66,7 +66,7 @@ export default function AdminHeader() {
     <img
       src={SettingIcon}
       alt="Settings Icon"
-      className="hover:opacity-80 hover:scale-105 transition duration-200"
+      className="hover:opacity-80 hover:scale-105 transition duration-200 size-6"
       aria-label="Settings"
     />
   </li>
@@ -74,7 +74,7 @@ export default function AdminHeader() {
     <img
       src={UserIcon}
       alt="User Icon"
-      className="hover:opacity-80 hover:scale-105 transition duration-200"
+      className="hover:opacity-80 hover:scale-105 transition duration-200 size-6"
       aria-label="User Profile"
     />
   </li>
