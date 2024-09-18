@@ -43,7 +43,7 @@ export default function UserHeader() {
             </li>
             <li>
               <Link
-                to="/dashboard"
+                to="/user"
                 className="hover:text-gray-300 transition duration-200 whitespace-nowrap"
               >
                 Dashboard

@@ -4,7 +4,7 @@ import UserDashboard from "./pages/UserDashboard"
 import AdminDashboard from "./pages/AdminDashboard"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
-import PertolonganTerdekat from "./pages/PerolonganTerdekat"
+import PertolonganTerdekat from "./pages/PertolonganTerdekat"
 
 
 
@@ -17,7 +17,7 @@ export default function App() {
       <Route path="/admin" element={<AdminDashboard/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
-      <Route path="/pertolongan" element={<PertolonganTerdekat/>}/>
+      <Route path="/pertolongan-terdekat" element={<PertolonganTerdekat/>}/>
 
     </Routes>
     </BrowserRouter>
