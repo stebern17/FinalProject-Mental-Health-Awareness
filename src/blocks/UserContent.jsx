@@ -139,7 +139,7 @@ export default function UserContent() {
           <Calendar
             onChange={onChange}
             value={value}
-            className="react-calendar"
+            className="react-calendar border p-5 rounded-lg font-semibold shadow-lg"
           />
         </div>
         {/* Inspirational News */}

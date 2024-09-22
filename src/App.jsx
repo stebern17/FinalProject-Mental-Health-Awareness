@@ -5,6 +5,7 @@ import AdminDashboard from "./pages/AdminDashboard"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import PertolonganTerdekat from "./pages/PertolonganTerdekat"
+import KonsultasiUser from "./pages/KonsultasiUser"
 
 
 
@@ -18,6 +19,7 @@ export default function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/pertolongan-terdekat" element={<PertolonganTerdekat/>}/>
+      <Route path="/konsultasi" element={<KonsultasiUser/>}/>
 
     </Routes>
     </BrowserRouter>
