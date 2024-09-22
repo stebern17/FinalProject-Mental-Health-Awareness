@@ -83,7 +83,7 @@ export default function UserContent() {
       style: {
         fontSize: '18px',
         fontWeight: 'bold',
-        color: '#333',
+        color: '#16423C',
       },
     },
     xaxis: {
@@ -122,7 +122,7 @@ export default function UserContent() {
   }
 
   return (
-    <div className="p-6 bg-[#C4DAD2] rounded-lg mt-5">
+    <div className="p-6 bg-[#C4DAD2] rounded-lg mt-5 ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Heatmap */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
@@ -135,16 +135,16 @@ export default function UserContent() {
         </div>
         {/* Calendar */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
-          <h3 className='text-lg font-bold mb-4'>Calendar</h3>
+          <h3 className='text-lg font-bold mb-4 text-[#16423C]'>Calendar</h3>
           <Calendar
             onChange={onChange}
             value={value}
-            className="react-calendar border p-5 rounded-lg font-semibold shadow-lg"
+            className="react-calendar border p-5 rounded-lg font-semibold shadow-lg text-[#16423C]"
           />
         </div>
         {/* Inspirational News */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
-          <h3 className='text-lg font-bold mb-4'>Inspirational News</h3>
+          <h3 className='text-lg font-bold mb-4 text-[#16423C]'>News For You</h3>
           <NewsCard
             judul='Tips Mengatasi Kecemasan'
             deskripsi='Kecemasan merupakan hal yang wajar, namun jika tidak diatasi akan berdampak buruk pada kesehatan mental.'

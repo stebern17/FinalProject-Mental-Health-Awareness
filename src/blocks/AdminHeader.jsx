@@ -4,6 +4,7 @@ import PageLogo from './../../public/PageLogo.png'
 import UserIcon from './../Icons/user.svg'
 import SettingIcon from './../Icons/setting.svg'
 import NotificationIcon from './../Icons/bell.svg'
+import { Dropdown, Avatar } from 'flowbite-react'
 
 export default function AdminHeader() {
   return (
@@ -63,20 +64,21 @@ export default function AdminHeader() {
     />
   </li>
   <li className="transition duration-200 cursor-pointer">
-    <img
-      src={SettingIcon}
-      alt="Settings Icon"
-      className="hover:opacity-80 hover:scale-105 transition duration-200 size-6"
-      aria-label="Settings"
-    />
-  </li>
-  <li className="transition duration-200 cursor-pointer">
-    <img
-      src={UserIcon}
-      alt="User Icon"
-      className="hover:opacity-80 hover:scale-105 transition duration-200 size-6"
-      aria-label="User Profile"
-    />
+  <Dropdown
+          arrowIcon={false}
+          inline
+          label={
+            <Avatar alt="User settings" img={UserIcon} rounded />
+          }
+        >
+          <Dropdown.Header>
+            <span className="block truncate text-sm font-medium">Hi There, Admin</span>
+          </Dropdown.Header>
+          <Dropdown.Item>Settings</Dropdown.Item>
+          <Dropdown.Item>Earnings</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item>Sign out</Dropdown.Item>
+        </Dropdown>
   </li>
 </ul>
     

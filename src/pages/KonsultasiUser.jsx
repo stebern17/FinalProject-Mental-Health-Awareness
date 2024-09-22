@@ -7,7 +7,7 @@ export default function KonsultasiUser() {
     <UserLayout>
         <div className='min-h-screen'>
             <div className='container'>
-              <h2 className='text-3xl font-bold text-center p-5'>Selamat Datang, Daftarkan Dirimu Sekarang</h2>
+              <h2 className='text-3xl font-bold text-center p-5 drop-shadow-md text-[#16423C]'>Selamat Datang, Daftarkan Dirimu Sekarang</h2>
                 <KonsultasiSection/>
                 
             </div>

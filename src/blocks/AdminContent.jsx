@@ -54,7 +54,7 @@ export default function AdminContent() {
         
         {/* Donut Chart */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
-          <h3 className="text-lg font-bold mb-4">Konsultasi</h3>
+          <h3 className="text-lg font-bold mb-4 text-[#16423C]">Konsultasi</h3>
           <ReactApexChart
             options={chartData.options}
             series={chartData.series}
@@ -65,7 +65,7 @@ export default function AdminContent() {
 
         {/* Calendar */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
-          <h3 className="text-lg font-bold mb-4">Calendar</h3>
+          <h3 className="text-lg font-bold mb-4 text-[#16423C]">Calendar</h3>
           <Calendar
             onChange={onChange}
             value={value}
@@ -75,7 +75,7 @@ export default function AdminContent() {
 
         {/* Progres Konsultasi */}
         <div className="bg-white p-4 shadow-lg rounded-lg relative">
-            <h3 className="text-lg font-bold mb-4">Progres Konsultasi</h3>
+            <h3 className="text-lg font-bold mb-4 text-[#16423C]">Progres Konsultasi</h3>
             <div className='overflow-y-auto max-h-60'>
               {konsultasi.map((konsul, index) => (
                 <KonsultasiCard

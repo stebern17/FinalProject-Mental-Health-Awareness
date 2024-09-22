@@ -42,12 +42,12 @@ export default function PertolonganTerdekat() {
     <UserLayout>
         <div className='min-h-screen'>
             <div className='container'>
-              <h1 className='text-3xl font-bold mt-10 text-center'>Pertolongan Terdekat</h1>
+              <h1 className='text-3xl font-bold mt-10 text-center text-[#16423C]'>Pertolongan Terdekat</h1>
               <div className='grid grid-cols-5 gap-3'>
                 <div>
                 <h3 className='text-xl font-bold mb-2'>Hotline</h3>
                   <div className='bg-white p-4 rounded-lg shadow-md'>
-                    <h4 className='text-lg font-semibold'>Kementerian Kesehatan</h4>
+                    <h4 className='text-lg font-semibold text-[#16423C]'>Kementerian Kesehatan</h4>
                     <p className='text-sm'>Telp: 119</p>
                     <p className='text-sm'>SMS: 0811-123-119</p>
                   </div>
@@ -57,7 +57,7 @@ export default function PertolonganTerdekat() {
                 <MapSection/>
                 </div>
                 <div>
-                <h3 className='text-xl font-bold mb-2'>Berita Terkini</h3>
+                <h3 className='text-xl font-bold mb-2 text-[#16423C]'>Berita Terkini</h3>
                 <div className='overflow-y-scroll max-h-[75vh]'>
                 {news.map((newsItem, index) => (
                   <NewsCard key={index} judul={newsItem.judul} deskripsi={newsItem.deskripsi} gambar={newsItem.gambar} deskripsiStyle={newsItem.deskripsiStyle} />
