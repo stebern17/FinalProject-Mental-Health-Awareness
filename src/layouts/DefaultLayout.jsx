@@ -4,12 +4,12 @@ import Footer from '../blocks/Footer'
 
 export default function DefaultLayout(props) {
   return (
-    <div>
-        <nav><Header/></nav>
+    <div className='min-h-dvh flex flex-col'>
+        <Header/>
 
         <main>{props.children}</main>
 
-        <footer><Footer/></footer> 
+        <Footer/> 
     </div>
   )
 }

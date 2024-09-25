@@ -4,12 +4,12 @@ import Footer from '../blocks/Footer'
 
 export default function UserLayout(props) {
   return (
-    <div>
-        <nav><UserHeader/></nav>
+    <div className='min-h-dvh flex flex-col'>
+        <UserHeader/>
 
         <main>{props.children}</main>
 
-        <footer><Footer/></footer> 
+        <Footer/> 
     </div>
   )
 }

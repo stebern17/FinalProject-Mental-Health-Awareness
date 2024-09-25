@@ -40,9 +40,9 @@ export default function PertolonganTerdekat() {
   ];
   return (
     <UserLayout>
-        <div className='min-h-screen'>
-            <div className='container'>
-              <h1 className='text-3xl font-bold mt-10 text-center text-[#16423C]'>Pertolongan Terdekat</h1>
+        <div>
+            <div className='container mb-1'>
+              <h1 className='text-3xl font-bold mt-1 text-center text-[#16423C]'>Pertolongan Terdekat</h1>
               <div className='grid grid-cols-5 gap-3'>
                 <div>
                 <h3 className='text-xl font-bold mb-2'>Hotline</h3>
@@ -58,7 +58,7 @@ export default function PertolonganTerdekat() {
                 </div>
                 <div>
                 <h3 className='text-xl font-bold mb-2 text-[#16423C]'>Berita Terkini</h3>
-                <div className='overflow-y-scroll max-h-[75vh]'>
+                <div className='overflow-y-scroll max-h-[66vh]'>
                 {news.map((newsItem, index) => (
                   <NewsCard key={index} judul={newsItem.judul} deskripsi={newsItem.deskripsi} gambar={newsItem.gambar} deskripsiStyle={newsItem.deskripsiStyle} />
                 ))}

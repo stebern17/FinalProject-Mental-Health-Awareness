@@ -6,8 +6,8 @@ import UserContent from '../blocks/UserContent'
 export default function UserDashboard() {
   return (
     <UserLayout>
-        <div className='min-h-screen'>
-          <div className='container'>
+        <div>
+          <div className='container mb-2'>
             <ProfileSection username="User"/>
             <UserContent/>
           </div>

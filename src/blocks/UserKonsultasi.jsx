@@ -1,11 +1,9 @@
 import {useState} from 'react'
 import { Dropdown, Datepicker } from 'flowbite-react'
-import DarkButton from './DarkButton'
 
 
 export default function UserKonsultasi() {
     const [selectedDomisili, setSelectedDomisili] = useState(null); // State for selected domisili
-    const [confirmationVisible, setConfirmationVisible] = useState(false); // State for confirmation message
 
     const namaDaerah = [
         { nama: 'Jakarta' },
@@ -20,16 +18,11 @@ export default function UserKonsultasi() {
     ];
 
     const handleDomisiliSelect = (daerah) => {
-        setSelectedDomisili(daerah); // Update state when domisili is selected
-    };
-
-    const handleScheduleCreation = () => {
-        // You can add additional logic here (e.g., form validation)
-        setConfirmationVisible(true); // Show confirmation message
+        setSelectedDomisili(daerah);
     };
 
     return (
-        <div className='bg-white shadow-md border-slate-400 my-3 rounded-md p-10 max-w-[60vw] mx-auto'>
+        <div className='bg-white shadow-md border-slate-400 rounded-md p-10 max-w-[60vw] max-h-[54vh] overflow-auto mx-auto'>
             <div className='text-center'>
                 <h3 className='font-bold text-2xl text-[#16423C]'>Buat Jadwal Konsultasi</h3>
                 <p className='text-lg text-[#16423C]'>"Jangan biarkan beban emosional menghantui Anda sendirian. Mendaftar untuk konsultasi adalah tindakan cinta terhadap diri sendiri. Anda berharga dan layak mendapatkan dukungan!"</p>
@@ -66,20 +59,6 @@ export default function UserKonsultasi() {
                 <div className='mt-5 flex justify-center'>
                     <Datepicker label='Pilih Tanggal Konsultasi' size='lg' inline />
                 </div>
-
-                <div className='flex justify-center mt-10'>
-                    <DarkButton 
-                        Title={"Buat Jadwal"} 
-                        className={"w-[30%] rounded-2xl shadow-lg"} 
-                        onClick={handleScheduleCreation} // Trigger confirmation on click
-                    />
-                </div>
-
-                {confirmationVisible && (
-                    <div className="mt-5 text-center">
-                        <p className='font-semibold text-green-600'>Jadwal konsultasi berhasil dibuat! Silahkan ke langkah selanjutnya</p>
-                    </div>
-                )}
             </div>
         </div>
     );

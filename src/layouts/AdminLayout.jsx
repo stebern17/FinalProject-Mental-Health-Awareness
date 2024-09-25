@@ -3,8 +3,8 @@ import AdminHeader from '../blocks/AdminHeader'
 
 export default function AdminLayout(props) {
   return (
-    <div>
-        <nav><AdminHeader/></nav>
+    <div className='min-h-dvh flex flex-col'>
+        <AdminHeader/>
 
         <main>{props.children}</main>
 
