@@ -22,7 +22,7 @@ export default function UserKonsultasi() {
     };
 
     return (
-        <div className='bg-white shadow-md border-slate-400 rounded-md p-10 max-w-[60vw] max-h-[54vh] overflow-auto mx-auto'>
+        <div className='bg-white shadow-md border-slate-400 rounded-md p-10 max-w-[60vw] max-h-[58vh] overflow-auto mx-auto'>
             <div className='text-center'>
                 <h3 className='font-bold text-2xl text-[#16423C]'>Buat Jadwal Konsultasi</h3>
                 <p className='text-lg text-[#16423C]'>"Jangan biarkan beban emosional menghantui Anda sendirian. Mendaftar untuk konsultasi adalah tindakan cinta terhadap diri sendiri. Anda berharga dan layak mendapatkan dukungan!"</p>

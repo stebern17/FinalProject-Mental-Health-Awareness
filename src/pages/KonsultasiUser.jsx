@@ -1,15 +1,15 @@
 import {useState} from 'react'
-import UserLayout from '../layouts/UserLayout'
+import KonsultasiLayout from '../layouts/KonsultasiLayout'
 import UserKonsultasi from '../blocks/UserKonsultasi'
 import Stepper from 'react-stepper-horizontal'
 import DokterKonsultasi from '../blocks/DokterKonsultasi'
 import DarkButton from '../components/DarkButton'
+import PaymentSection from '../blocks/PaymentSection'
 
 export default function KonsultasiUser() {
   const [step, setStep] = useState(0);
   return (
-    <UserLayout>
-        <div>
+    <KonsultasiLayout>
     <div className='container'>
         <div className='flex flex-col gap-3'>
             <Stepper 
@@ -23,6 +23,7 @@ export default function KonsultasiUser() {
             {/* Correct conditional rendering based on `step` state */}
             {step === 0 && <UserKonsultasi />}
             {step === 1 && <DokterKonsultasi />}
+            {step === 2 && <PaymentSection />}
         </div>
         <div className='flex justify-center gap-10 mb-5 mt-2'>
             {step > 0 && (
@@ -36,7 +37,6 @@ export default function KonsultasiUser() {
             )}
         </div>
     </div>
-</div>
-    </UserLayout>
+    </KonsultasiLayout>
   )
 }
