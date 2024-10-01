@@ -26,7 +26,7 @@ export default function DokterKonsultasi() {
   ];
 
   return (
-    <div className='w-full overflow-y-auto py-2 px-4'>
+    <div className='w-full overflow-y-auto py-2 px-4 max-h-[58vh]'>
       <div className='flex gap-6 w-max snap-x'>
         {psikologData.map((psikolog, index) => (
           <DokterCardKonsultasi

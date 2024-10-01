@@ -53,7 +53,7 @@ export default function PertolonganTerdekat() {
                   </div>
                   <DarkButton Title='hubungi' className={"px-4 py-2 rounded-lg mt-5"}/>  
                 </div>
-                <div className='col-span-3'>
+                <div className='col-span-3 mx-auto'>
                 <MapSection/>
                 </div>
                 <div>
