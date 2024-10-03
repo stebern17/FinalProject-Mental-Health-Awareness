@@ -8,14 +8,17 @@ export default function NewsSection() {
     {
       judul: 'Tips Mengatasi Kecemasan',
       deskripsi: 'Kecemasan merupakan hal yang wajar, namun jika tidak diatasi akan berdampak buruk pada kesehatan mental.',
+      grid: 'grid-cols-1 md:grid-cols-2',
     },
     {
       judul: 'Cara Menjaga Kesehatan Mental',
       deskripsi: 'Menjaga kesehatan mental penting untuk kesejahteraan hidup sehari-hari.',
+      grid: 'grid-cols-1 md:grid-cols-2',
     },
     {
       judul: 'Mengenal Depresi dan Cara Mengatasinya',
       deskripsi: 'Depresi bisa terjadi pada siapa saja. Penting untuk mengetahui cara menanganinya.',
+      grid: 'grid-cols-1 md:grid-cols-2',
     },
   ];
 
@@ -39,7 +42,7 @@ export default function NewsSection() {
         >
           {news.map((newsItem, index) => (
             <SplideSlide key={index}>
-              <NewsCard judul={newsItem.judul} deskripsi={newsItem.deskripsi} />
+              <NewsCard judul={newsItem.judul} deskripsi={newsItem.deskripsi} grid={newsItem.grid} />
             </SplideSlide>
           ))}
         </Splide>

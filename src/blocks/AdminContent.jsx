@@ -51,7 +51,6 @@ export default function AdminContent() {
   return (
     <div className="p-6 bg-[#C4DAD2] rounded-lg mt-5">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
         {/* Donut Chart */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
           <h3 className="text-lg font-bold mb-4 text-[#16423C]">Konsultasi</h3>

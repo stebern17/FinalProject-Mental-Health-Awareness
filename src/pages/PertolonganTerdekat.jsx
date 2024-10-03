@@ -12,30 +12,35 @@ export default function PertolonganTerdekat() {
       deskripsi: 'Teknik relaksasi seperti pernapasan dalam dan meditasi dapat membantu mengurangi tingkat stres dalam kehidupan sehari-hari.',
       gambar: 'hidden',
       deskripsiStyle: 'hidden',
+      grid: 'grid-cols-1'
     },
     {
       judul: 'Pentingnya Tidur Berkualitas',
       deskripsi: 'Tidur yang cukup dan berkualitas sangat penting untuk kesehatan fisik dan mental. Pelajari cara memperbaiki kualitas tidur Anda.',
       gambar: 'hidden',
       deskripsiStyle: 'hidden',
+      grid: 'grid-cols-1'
     },
     {
       judul: 'Mengenal Tanda-tanda Kecemasan',
       deskripsi: 'Tanda-tanda kecemasan sering kali tidak terlihat jelas. Kenali gejala dan cari tahu cara mengelolanya dengan lebih baik.',
       gambar: 'hidden',
       deskripsiStyle: 'hidden',
+      grid: 'grid-cols-1'
     },
     {
       judul: 'Kesehatan Mental dan Pola Makan',
       deskripsi: 'Pola makan yang seimbang dapat memengaruhi kesehatan mental. Temukan makanan yang dapat meningkatkan suasana hati dan energi.',
       gambar: 'hidden',
       deskripsiStyle: 'hidden',
+      grid: 'grid-cols-1'
     },
     {
       judul: 'Manfaat Aktivitas Fisik untuk Kesehatan Mental',
       deskripsi: 'Aktivitas fisik secara teratur tidak hanya bermanfaat untuk tubuh, tetapi juga dapat meningkatkan kesehatan mental dan kesejahteraan.',
       gambar: 'hidden',
       deskripsiStyle: 'hidden',
+      grid: 'grid-cols-1'
     },
   ];
   return (

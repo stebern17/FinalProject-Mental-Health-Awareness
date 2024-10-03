@@ -1,10 +1,10 @@
 import React from 'react'
 import LightButton from './LightButton'
 
-export default function NewsCard({judul, deskripsi, gambar, deskripsiStyle}) {
+export default function NewsCard({judul, deskripsi, gambar, deskripsiStyle, grid}) {
   return (
     <div className="flex justify-center py-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center bg-[#6A9C89] text-white rounded-2xl p-6 shadow-lg max-w-4xl w-full gap-6">
+      <div className={`grid ${grid} items-center bg-[#6A9C89] text-white rounded-2xl p-6 shadow-lg max-w-4xl w-full gap-6`}>
         <div className="space-y-4">
           <h2 className="font-bold text-3xl">{judul}</h2>
           <p className={`${deskripsiStyle} text-sm leading-relaxed`}>{deskripsi}</p>

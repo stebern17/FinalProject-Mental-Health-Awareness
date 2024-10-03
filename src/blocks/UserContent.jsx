@@ -148,6 +148,7 @@ export default function UserContent() {
           <NewsCard
             judul='Tips Mengatasi Kecemasan'
             gambar='hidden'
+            grid='grid-cols-1'
           />
         </div>
       </div>
