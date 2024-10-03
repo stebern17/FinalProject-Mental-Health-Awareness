@@ -144,10 +144,10 @@ export default function UserContent() {
         </div>
         {/* Inspirational News */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
-          <h3 className='text-lg font-bold mb-4 text-[#16423C]'>News For You</h3>
+          <h3 className='text-lg font-bold text-[#16423C]'>News For You</h3>
           <NewsCard
             judul='Tips Mengatasi Kecemasan'
-            deskripsi='Kecemasan merupakan hal yang wajar, namun jika tidak diatasi akan berdampak buruk pada kesehatan mental.'
+            gambar='hidden'
           />
         </div>
       </div>

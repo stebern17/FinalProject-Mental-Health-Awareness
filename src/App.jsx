@@ -7,6 +7,7 @@ import Register from "./pages/Register"
 import PertolonganTerdekat from "./pages/PertolonganTerdekat"
 import KonsultasiUser from "./pages/KonsultasiUser"
 import KonsultasiDone from "./pages/KonsultasiDone"
+import Testimoni from "./pages/Testimoni"
 
 
 
@@ -22,6 +23,7 @@ export default function App() {
       <Route path="/pertolongan-terdekat" element={<PertolonganTerdekat/>}/>
       <Route path="/konsultasi" element={<KonsultasiUser/>}/>
       <Route path="/done" element={<KonsultasiDone/>}/>
+      <Route path="/testimoni" element={<Testimoni/>}/>
 
 
     </Routes>
