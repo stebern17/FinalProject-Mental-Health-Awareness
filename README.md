@@ -29,7 +29,7 @@ Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut.
 
 1. **Clone repository:**
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/stebern17/FinalProject-Mental-Health-Awareness.git
    cd your-repo-name
 2. **Instal dependencies:**
    npm install
