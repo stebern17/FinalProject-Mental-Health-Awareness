@@ -9,6 +9,7 @@ import KonsultasiUser from "./pages/KonsultasiUser"
 import KonsultasiDone from "./pages/KonsultasiDone"
 import Testimoni from "./pages/Testimoni"
 import ManageKonsultasi from "./pages/ManageKonsultasi"
+import TestimoniAdmin from "./pages/TestimoniAdmin"
 
 
 
@@ -26,6 +27,7 @@ export default function App() {
       <Route path="/done" element={<KonsultasiDone/>}/>
       <Route path="/testimoni" element={<Testimoni/>}/>
       <Route path="/manage-konsultasi" element={<ManageKonsultasi/>}/>
+      <Route path="/testimoni-admin" element={<TestimoniAdmin/>}/>
 
 
     </Routes>
