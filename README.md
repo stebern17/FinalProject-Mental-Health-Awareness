@@ -1,4 +1,4 @@
-# Platform Kesadaran Kesehatan Mental
+# Mental Health Awareness Platform
 
 Proyek ini adalah aplikasi frontend yang dibangun dengan React dan Tailwind CSS. Platform ini bertujuan untuk meningkatkan kesadaran tentang isu kesehatan mental serta menyediakan sumber daya dan dukungan bagi individu yang membutuhkan. Tujuan utama adalah menciptakan platform yang informatif, interaktif, dan mudah digunakan untuk mendidik serta mempromosikan kesejahteraan mental.
 
