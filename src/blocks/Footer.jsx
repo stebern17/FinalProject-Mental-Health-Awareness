@@ -27,8 +27,31 @@ export default function Footer({ nav, behave }) {
           MentalHealthCare © 2024. All rights reserved.
         </p>
         <div className="hidden md:flex justify-end gap-4">
-          <img src={Instagram} alt="Instagram" />
-          <img src={Whatsapp} alt="WhatsApp" />
+          <Link
+            to="#"
+            onClick={() =>
+              window.open(
+                "https://www.instagram.com/sultan.faaiz/",
+                "_blank",
+                "noopener,noreferrer"
+              )
+            }
+          >
+            <img src={Instagram} alt="Instagram" />
+          </Link>
+
+          <Link
+            to="#"
+            onClick={() =>
+              window.open(
+                "https://wa.me/6288215591428",
+                "_blank",
+                "noopener,noreferrer"
+              )
+            }
+          >
+            <img src={Whatsapp} alt="WhatsApp" />
+          </Link>
         </div>
       </div>
     </footer>
