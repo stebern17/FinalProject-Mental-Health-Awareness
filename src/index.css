@@ -2,7 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-    @apply bg-[#E9EFEC]; /* Replace with your desired color */
-  }
+  @apply bg-[#E9EFEC]; /* Replace with your desired color */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4dad2;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6a9c89;
+  border-radius: 10px;
+}

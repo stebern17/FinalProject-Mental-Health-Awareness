@@ -1,5 +1,4 @@
 import React from 'react'
-import HeroImage from './../../public/HeroImage.svg'
 import LightButton from '../components/LightButton'
 
 export default function HeroSection() {
@@ -22,7 +21,7 @@ export default function HeroSection() {
       />
     </div>
     <img
-      src={HeroImage}
+      src="/HeroImage.svg"
       alt="HeroImage"
       className="rounded-lg w-full h-auto object-cover shadow-md"
     />
