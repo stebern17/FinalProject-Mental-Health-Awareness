@@ -6,14 +6,42 @@ import Stepper from "react-stepper-horizontal";
 import DokterKonsultasi from "../blocks/DokterKonsultasi";
 import DarkButton from "../components/DarkButton";
 import PaymentSection from "../blocks/PaymentSection";
+import { motion } from "framer-motion";
 
 export default function KonsultasiUser() {
   const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  // Define animation variants
+  const variants = {
+    enter: (direction) => ({
+      opacity: 0,
+      x: direction > 0 ? 100 : -100,
+    }),
+    center: {
+      opacity: 1,
+      x: 0,
+    },
+    exit: (direction) => ({
+      opacity: 0,
+      x: direction < 0 ? 100 : -100,
+    }),
+  };
+
+  // Handle step change with direction tracking
+  const handleNextStep = () => {
+    setDirection(1);
+    setStep((prevStep) => (prevStep < 2 ? prevStep + 1 : prevStep));
+  };
+
+  const handlePrevStep = () => {
+    setDirection(-1);
+    setStep((prevStep) => (prevStep > 0 ? prevStep - 1 : prevStep));
+  };
 
   return (
     <KonsultasiLayout>
-      <div className="container">
-        {" "}
+      <div className="container overflow-hidden">
         <div className="flex flex-col gap-3">
           <Stepper
             steps={[
@@ -27,19 +55,31 @@ export default function KonsultasiUser() {
             completeBarColor={"#16423C"}
           />
 
-          {step === 0 && <UserKonsultasi />}
-          {step === 1 && <DokterKonsultasi />}
-          {step === 2 && <PaymentSection />}
+          {/* Step Transition */}
+          <motion.div
+            key={step} // This key triggers the animation on step change
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            custom={direction} // Use the direction state for custom prop
+            transition={{ duration: 0.5 }}
+          >
+            {step === 0 && <UserKonsultasi />}
+            {step === 1 && <DokterKonsultasi />}
+            {step === 2 && <PaymentSection />}
+          </motion.div>
         </div>
+
         <div className="fixed bottom-5 left-0 w-full py-4 flex justify-center gap-10">
           {step > 0 && (
             <DarkButton
-              onClick={() => setStep(step - 1)}
+              onClick={handlePrevStep}
               className={"px-4 py-2 rounded-3xl w-[20%] shadow-xl"}
               Title={"Kembali"}
             />
           )}
-          {step > 1 && (
+          {step === 2 && (
             <Link to="/done" className="flex justify-center w-[20%]">
               <DarkButton
                 className="px-4 py-2 rounded-3xl w-full shadow-xl"
@@ -49,7 +89,7 @@ export default function KonsultasiUser() {
           )}
           {step < 2 && (
             <DarkButton
-              onClick={() => setStep(step + 1)}
+              onClick={handleNextStep}
               className={"px-4 py-2 rounded-3xl w-[20%] shadow-xl"}
               Title={"Selanjutnya"}
             />

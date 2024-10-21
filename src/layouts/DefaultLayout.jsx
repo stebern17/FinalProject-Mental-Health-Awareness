@@ -7,7 +7,7 @@ export default function DefaultLayout(props) {
     <div className="min-h-dvh flex flex-col">
       <Header />
       <main>{props.children}</main>
-      <Footer nav={"/"} behave={"scrollToTop"} /> {/* Pass behave prop */}
+      <Footer nav={"/"} behave={"scrollToTop"} />
     </div>
   );
 }

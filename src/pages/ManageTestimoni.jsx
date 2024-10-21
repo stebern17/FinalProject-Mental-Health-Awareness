@@ -1,6 +1,7 @@
 import React from "react";
 import AdminLayout from "../layouts/AdminLayout";
 import TabelTestimoni from "../components/TabelTestimoni";
+import { motion } from "framer-motion";
 
 export default function ManageTestimoni() {
   const testimonials = [
@@ -42,15 +43,28 @@ export default function ManageTestimoni() {
     },
   ];
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 80 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <AdminLayout>
       <div className="container">
         <h3 className="text-3xl font-bold text-center text-[#16423C]">
           Testimoni User
         </h3>
-        <div className="mt-8">
-          <TabelTestimoni testimonials={testimonials} />
-        </div>
+
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 1 }}
+        >
+          <div className="mt-8">
+            <TabelTestimoni testimonials={testimonials} />
+          </div>
+        </motion.div>
       </div>
     </AdminLayout>
   );

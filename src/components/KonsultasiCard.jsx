@@ -11,7 +11,7 @@ export default function KonsultasiCard({
       <div
         className={`${getBgColor(
           progress
-        )} text-white rounded-xl shadow-lg p-6 max-w-sm w-full`}
+        )} rounded-xl shadow-lg p-6 max-w-sm w-full`}
       >
         <div className="flex justify-between items-center mb-4">
           <p className="text-sm font-medium">{tanggal}</p>

@@ -52,19 +52,19 @@ export default function UserContent() {
             {
               from: 0,
               to: 30,
-              color: "#E9EFEC", // Light color for lower range
+              color: "#E9EFEC",
               name: "Low",
             },
             {
               from: 31,
               to: 60,
-              color: "#6A9C89", // Medium color
+              color: "#6A9C89",
               name: "Medium",
             },
             {
               from: 61,
               to: 90,
-              color: "#16423C", // Dark color for higher range
+              color: "#16423C",
               name: "High",
             },
           ],

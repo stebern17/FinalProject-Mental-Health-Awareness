@@ -1,6 +1,7 @@
 import React from "react";
 import TabelKonsultasi from "../components/TabelKonsultasi";
 import AdminLayout from "../layouts/AdminLayout";
+import { motion } from "framer-motion";
 
 export default function ManageKonsultasi() {
   const konsultasi = [
@@ -49,15 +50,27 @@ export default function ManageKonsultasi() {
     }
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 80 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <AdminLayout>
       <div className="container">
         <h3 className="text-3xl font-bold text-center text-[#16423C]">
           Management Konsultasi
         </h3>
-        <div className="mt-8">
-          <TabelKonsultasi konsultasi={konsultasi} bgStats={bgStats} />
-        </div>
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 1 }}
+        >
+          <div className="mt-8">
+            <TabelKonsultasi konsultasi={konsultasi} bgStats={bgStats} />
+          </div>
+        </motion.div>
       </div>
     </AdminLayout>
   );

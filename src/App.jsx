@@ -11,6 +11,7 @@ import Testimoni from "./pages/Testimoni";
 import ManageKonsultasi from "./pages/ManageKonsultasi";
 import TestimoniAdmin from "./pages/ManageTestimoni";
 import ForgetPassword from "./pages/ForgetPassword";
+import WriteNews from "./pages/WriteNews";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/testimoni" element={<Testimoni />} />
         <Route path="/manage-konsultasi" element={<ManageKonsultasi />} />
         <Route path="/testimoni-admin" element={<TestimoniAdmin />} />
+        <Route path="/write-news" element={<WriteNews />} />
       </Routes>
     </BrowserRouter>
   );

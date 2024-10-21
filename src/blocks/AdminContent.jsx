@@ -50,13 +50,12 @@ export default function AdminContent() {
     }
   };
 
-  // State for the Donut Chart
   const [chartData] = useState({
     options: {
       labels: ["Done", "Pending"],
       colors: ["#16423C", "#C4DAD2"],
     },
-    series: [60, 40], // Series data for the donut chart
+    series: [60, 40],
   });
 
   return (
@@ -73,7 +72,6 @@ export default function AdminContent() {
           />
         </div>
 
-        {/* Calendar */}
         <div className="bg-white p-4 shadow-lg rounded-lg">
           <h3 className="text-lg font-bold mb-4 text-[#16423C]">Calendar</h3>
           <Calendar
@@ -83,7 +81,6 @@ export default function AdminContent() {
           />
         </div>
 
-        {/* Progres Konsultasi */}
         <div className="bg-white p-4 shadow-lg rounded-lg relative">
           <h3 className="text-lg font-bold mb-4 text-[#16423C]">
             Progres Konsultasi
@@ -95,7 +92,7 @@ export default function AdminContent() {
                 tanggal={konsul.tanggal}
                 namaDokter={konsul.namaDokter}
                 progress={konsul.progress}
-                getBgColor={getBgColor} // Pass the function as a prop
+                getBgColor={getBgColor}
               />
             ))}
           </div>

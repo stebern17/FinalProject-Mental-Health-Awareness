@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Apple from "./../Icons/apple.svg";
 import Google from "./../Icons/google.svg";
 import DarkButton from "../components/DarkButton";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import LoginModal from "./../components/LoginModal";
 
 export default function LoginBlock() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
   const fadeLeft = {
     hidden: { opacity: 0, x: -100 },
     visible: { opacity: 1, x: 0 },
@@ -15,6 +22,49 @@ export default function LoginBlock() {
     hidden: { opacity: 0, x: 100 },
     visible: { opacity: 1, x: 0 },
   };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      email: "faaiz777@gmail.com",
+      username: "Sultan",
+    };
+
+    const adminData = {
+      email: "admin123@gmail.com",
+      username: "Admin Cahaya",
+    };
+
+    const isAuthenticatedUser = email === userData.email && password === "123";
+    const isAuthenticatedAdmin =
+      email === adminData.email && password === "123";
+
+    if (isAuthenticatedUser) {
+      localStorage.setItem("user", JSON.stringify(userData));
+
+      setShowModal(true);
+
+      setTimeout(() => {
+        navigate("/user");
+      }, 2000);
+    }
+    if (isAuthenticatedAdmin) {
+      localStorage.setItem("user", JSON.stringify(adminData));
+
+      setShowModal(true);
+
+      setTimeout(() => {
+        navigate("/admin");
+      }, 2000);
+    } else {
+      setErrorMessage("Email atau password salah. Silakan coba lagi.");
+    }
+  };
+
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const username = storedUser?.username;
+
   return (
     <>
       <div className="container min-h-screen flex items-center justify-center p-6">
@@ -27,7 +77,7 @@ export default function LoginBlock() {
           >
             <div>
               <h1 className="text-3xl font-bold my-5 text-[#16423C]">Login</h1>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleLogin}>
                 <label className="block">
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
                     Email
@@ -35,6 +85,8 @@ export default function LoginBlock() {
                   <input
                     type="email"
                     name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="mt-1 px-3 py-2 bg-white border border-slate-300 shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                     placeholder="you@example.com"
                   />
@@ -46,9 +98,16 @@ export default function LoginBlock() {
                   <input
                     type="password"
                     name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="mt-1 px-3 py-2 bg-white border border-slate-300 shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                     placeholder="Input Password"
                   />
+                  {errorMessage && (
+                    <div className="text-red-500 text-sm mt-2">
+                      {errorMessage}
+                    </div>
+                  )}
                 </label>
                 <div className="flex items-center justify-between">
                   <label className="flex items-center">
@@ -118,6 +177,14 @@ export default function LoginBlock() {
           </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showModal && (
+          <LoginModal
+            message={`Hi selamat datang, ${username} anda akan diarahkan ke dashboard`}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

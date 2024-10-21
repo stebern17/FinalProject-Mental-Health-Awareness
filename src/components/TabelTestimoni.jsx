@@ -1,6 +1,5 @@
 import React from "react";
 import { Table, TableBody, TableHead } from "flowbite-react";
-import DarkButton from "./DarkButton";
 
 export default function TabelTestimoni({ testimonials = [] }) {
   return (

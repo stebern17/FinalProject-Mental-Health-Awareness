@@ -4,8 +4,8 @@ import Whatsapp from "./../Icons/whatsapp.svg";
 
 export default function Footer({ nav, behave }) {
   const scrollToTop = (event) => {
-    event.preventDefault(); // Prevent default link behavior
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -14,7 +14,7 @@ export default function Footer({ nav, behave }) {
         <div className="flex justify-center md:justify-start">
           <Link
             to={nav}
-            onClick={behave === "scrollToTop" ? scrollToTop : undefined} // Conditionally call scrollToTop
+            onClick={behave === "scrollToTop" ? scrollToTop : undefined}
           >
             <img
               src="/PageLogo.png"

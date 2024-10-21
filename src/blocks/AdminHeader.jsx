@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UserIcon from "./../Icons/user.svg";
 import NotificationIcon from "./../Icons/bell.svg";
 import { Dropdown, Avatar } from "flowbite-react";
+import LogoutModal from "../components/LogoutModal";
 
 export default function AdminHeader() {
+  const [showModal, setShowModal] = useState(false);
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const username = storedUser?.username;
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setShowModal(false);
+    window.location.href = "/";
+  };
+
   return (
     <header className="bg-[#16423C] p-4 shadow-md max-h-[15vh] mb-2">
       <div className="container mx-auto grid grid-cols-3 items-center gap-4">
@@ -54,7 +65,6 @@ export default function AdminHeader() {
         </nav>
 
         <ul className="flex justify-end items-center gap-4 text-white text-xs md:text-sm font-medium">
-          {/* Notification Dropdown */}
           <li className="transition duration-200 cursor-pointer">
             <Dropdown
               arrowIcon={false}
@@ -81,7 +91,6 @@ export default function AdminHeader() {
             </Dropdown>
           </li>
 
-          {/* User Dropdown */}
           <li className="transition duration-200 cursor-pointer">
             <Dropdown
               arrowIcon={false}
@@ -90,14 +99,21 @@ export default function AdminHeader() {
             >
               <Dropdown.Header>
                 <span className="block truncate text-sm font-medium">
-                  Hi There, Admin
+                  Hi There, {username}
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>Sign out</Dropdown.Item>
+              <Dropdown.Item onClick={() => setShowModal(true)}>
+                Sign out
+              </Dropdown.Item>
             </Dropdown>
           </li>
         </ul>
       </div>
+      <LogoutModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleLogout={handleLogout}
+      />
     </header>
   );
 }

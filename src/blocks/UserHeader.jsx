@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UserIcon from "./../Icons/user.svg";
 import { Dropdown, Avatar } from "flowbite-react";
 import NotificationIcon from "./../Icons/bell.svg";
+import LogoutModal from "./../components/LogoutModal"; // Import LogoutModal component
 
 export default function UserHeader() {
+  const [showModal, setShowModal] = useState(false);
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const username = storedUser?.username;
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setShowModal(false);
+    window.location.href = "/";
+  };
+
   return (
     <header className="bg-[#16423C] p-4 shadow-md max-h-[15vh]">
       <div className="container mx-auto grid grid-cols-3 items-center gap-4">
-        {/* Logo Section */}
         <Link to="/user" className="flex justify-start">
           <img
             src="/PageLogo.png"
@@ -17,7 +27,6 @@ export default function UserHeader() {
           />
         </Link>
 
-        {/* Navigation Links */}
         <nav className="flex justify-center items-center gap-4 text-white text-sm md:text-base font-medium">
           <ul className="flex space-x-4">
             <li>
@@ -55,9 +64,7 @@ export default function UserHeader() {
           </ul>
         </nav>
 
-        {/* Action Icons */}
         <ul className="flex justify-end items-center gap-4 text-white text-xs md:text-sm font-medium">
-          {/* Notification Dropdown */}
           <li className="transition duration-200 cursor-pointer">
             <Dropdown
               arrowIcon={false}
@@ -84,7 +91,6 @@ export default function UserHeader() {
             </Dropdown>
           </li>
 
-          {/* User Dropdown */}
           <li className="transition duration-200 cursor-pointer">
             <Dropdown
               arrowIcon={false}
@@ -93,14 +99,22 @@ export default function UserHeader() {
             >
               <Dropdown.Header>
                 <span className="block truncate text-sm font-medium">
-                  Hi There, User
+                  Hi There, {username}
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>Sign out</Dropdown.Item>
+              <Dropdown.Item onClick={() => setShowModal(true)}>
+                Sign out
+              </Dropdown.Item>
             </Dropdown>
           </li>
         </ul>
       </div>
+
+      <LogoutModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleLogout={handleLogout}
+      />
     </header>
   );
 }
