@@ -119,7 +119,7 @@ export default function RegisterBlock() {
             transition={{ duration: 1 }}
           >
             <img
-              src={HeroImage}
+              src="/HeroImage.svg"
               alt="HeroImage"
               className="mx-auto w-full max-w-md object-contain"
             />

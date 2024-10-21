@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
 
-export default function KonsultasiCard({tanggal, namaDokter, progress}) {
+export default function KonsultasiCard({
+  tanggal,
+  namaDokter,
+  progress,
+  getBgColor,
+}) {
   return (
     <div className="flex justify-center items-center py-4 px-5">
-      <div className="bg-[#6A9C89] text-white rounded-xl shadow-lg p-6 max-w-sm w-full">
+      <div
+        className={`${getBgColor(
+          progress
+        )} text-white rounded-xl shadow-lg p-6 max-w-sm w-full`}
+      >
         <div className="flex justify-between items-center mb-4">
           <p className="text-sm font-medium">{tanggal}</p>
         </div>
@@ -16,5 +25,5 @@ export default function KonsultasiCard({tanggal, namaDokter, progress}) {
         </div>
       </div>
     </div>
-  )
+  );
 }

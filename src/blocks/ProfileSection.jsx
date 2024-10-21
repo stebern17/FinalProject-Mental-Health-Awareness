@@ -1,6 +1,5 @@
 import React from "react";
 import UserIcon from "./../Icons/user.svg";
-import DarkButton from "../components/DarkButton";
 
 export default function ProfileSection({ username }) {
   return (

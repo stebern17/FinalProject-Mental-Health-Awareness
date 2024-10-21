@@ -1,5 +1,4 @@
 import React from "react";
-import HeroImage from "./../../public/HeroImage.svg";
 import Apple from "./../Icons/apple.svg";
 import Google from "./../Icons/google.svg";
 import DarkButton from "../components/DarkButton";
@@ -62,7 +61,7 @@ export default function LoginBlock() {
                       Remember me
                     </span>
                   </label>
-                  <Link to="/forget-password">
+                  <Link to="/login/forget-password">
                     <p className="text-sm text-sky-500 hover:text-sky-700">
                       Forgot Password?
                     </p>
@@ -112,7 +111,7 @@ export default function LoginBlock() {
             transition={{ duration: 1 }}
           >
             <img
-              src={HeroImage}
+              src="/HeroImage.svg"
               alt="HeroImage"
               className="mx-auto w-full max-w-md object-contain"
             />

@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/login/forget-password" element={<ForgetPassword />} />
         <Route path="/pertolongan-terdekat" element={<PertolonganTerdekat />} />
         <Route path="/konsultasi" element={<KonsultasiUser />} />
         <Route path="/done" element={<KonsultasiDone />} />

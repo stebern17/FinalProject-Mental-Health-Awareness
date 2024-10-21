@@ -6,16 +6,12 @@ import KonsultasiCard from "../components/KonsultasiCard";
 
 export default function AdminContent() {
   const [value, onChange] = useState(new Date());
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
   const konsultasi = [
     {
       tanggal: "12/09/2023",
       namaDokter: "Dr. Sarah Johnson",
-      progress: "Menunggu Konfirmasi",
+      progress: "Menunggu Pembayaran",
     },
     {
       tanggal: "10/09/2023",
@@ -38,6 +34,21 @@ export default function AdminContent() {
       progress: "Menunggu Pembayaran",
     },
   ];
+
+  const getBgColor = (progress) => {
+    switch (progress) {
+      case "Selesai":
+        return "bg-[#D4EDDA] text-[#155724]";
+      case "Sedang Berlangsung":
+        return "bg-[#CCE5FF] text-[#004085]";
+      case "Dibatalkan":
+        return "bg-[#F8D7DA] text-[#721C24]";
+      case "Menunggu Pembayaran":
+        return "bg-[#FFF3CD] text-[#856404]";
+      default:
+        return "bg-white text-black";
+    }
+  };
 
   // State for the Donut Chart
   const [chartData] = useState({
@@ -77,13 +88,14 @@ export default function AdminContent() {
           <h3 className="text-lg font-bold mb-4 text-[#16423C]">
             Progres Konsultasi
           </h3>
-          <div className="overflow-y-auto max-h-60">
+          <div className="overflow-y-auto max-h-64">
             {konsultasi.map((konsul, index) => (
               <KonsultasiCard
                 key={index}
                 tanggal={konsul.tanggal}
                 namaDokter={konsul.namaDokter}
                 progress={konsul.progress}
+                getBgColor={getBgColor} // Pass the function as a prop
               />
             ))}
           </div>
