@@ -16,7 +16,8 @@ export default function AdminDashboard() {
   };
 
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const username = storedUser?.username;
+  const username = storedUser?.name;
+  const avatar = storedUser?.avatar;
 
   return (
     <AdminLayout>

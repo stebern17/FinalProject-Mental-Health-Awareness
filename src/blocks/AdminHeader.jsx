@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import UserIcon from "./../Icons/user.svg";
 import NotificationIcon from "./../Icons/bell.svg";
 import { Dropdown, Avatar } from "flowbite-react";
 import LogoutModal from "../components/LogoutModal";
@@ -8,7 +7,8 @@ import LogoutModal from "../components/LogoutModal";
 export default function AdminHeader() {
   const [showModal, setShowModal] = useState(false);
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const username = storedUser?.username;
+  const username = storedUser?.name;
+  const avatar = storedUser?.avatar;
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -95,7 +95,7 @@ export default function AdminHeader() {
             <Dropdown
               arrowIcon={false}
               inline
-              label={<Avatar alt="User settings" img={UserIcon} rounded />}
+              label={<Avatar alt="User settings" img={avatar} rounded />}
             >
               <Dropdown.Header>
                 <span className="block truncate text-sm font-medium">

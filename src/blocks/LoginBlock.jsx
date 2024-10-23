@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Apple from "./../Icons/apple.svg";
 import Google from "./../Icons/google.svg";
 import DarkButton from "../components/DarkButton";
@@ -12,6 +12,7 @@ export default function LoginBlock() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const fadeLeft = {
     hidden: { opacity: 0, x: -100 },
@@ -23,39 +24,39 @@ export default function LoginBlock() {
     visible: { opacity: 1, x: 0 },
   };
 
+  // Fetch user data from the API
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(
+          "https://6718e1f57fc4c5ff8f4b832e.mockapi.io/api/MentalHealthCare/UserRole"
+        );
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const userData = {
-      email: "faaiz777@gmail.com",
-      username: "Sultan",
-    };
+    // Find the user based on email and password
+    const authenticatedUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
 
-    const adminData = {
-      email: "admin123@gmail.com",
-      username: "Admin Cahaya",
-    };
-
-    const isAuthenticatedUser = email === userData.email && password === "123";
-    const isAuthenticatedAdmin =
-      email === adminData.email && password === "123";
-
-    if (isAuthenticatedUser) {
-      localStorage.setItem("user", JSON.stringify(userData));
-
+    if (authenticatedUser) {
+      // Store user data including avatar in localStorage
+      localStorage.setItem("user", JSON.stringify(authenticatedUser));
       setShowModal(true);
 
+      const redirectPath = authenticatedUser.role ? "/admin" : "/user";
       setTimeout(() => {
-        navigate("/user");
-      }, 2000);
-    }
-    if (isAuthenticatedAdmin) {
-      localStorage.setItem("user", JSON.stringify(adminData));
-
-      setShowModal(true);
-
-      setTimeout(() => {
-        navigate("/admin");
+        navigate(redirectPath);
       }, 2000);
     } else {
       setErrorMessage("Email atau password salah. Silakan coba lagi.");
@@ -63,7 +64,8 @@ export default function LoginBlock() {
   };
 
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const username = storedUser?.username;
+  const username = storedUser?.name; // Use 'name' for the username
+  const avatar = storedUser?.avatar; // Get avatar from localStorage
 
   return (
     <>
