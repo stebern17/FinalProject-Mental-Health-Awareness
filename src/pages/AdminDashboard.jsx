@@ -29,7 +29,7 @@ export default function AdminDashboard() {
             animate="visible" // Added animate prop to trigger the fade-in effect
             transition={{ duration: 1 }}
           >
-            <ProfileSection username={username} />
+            <ProfileSection username={username} UserIcon={avatar} />
           </motion.div>
           <motion.div
             variants={fadeInRight}
