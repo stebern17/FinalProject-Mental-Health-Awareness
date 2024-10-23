@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Instagram from "./../Icons/Instagram.svg";
+import Instagram from "./../Icons/instagram.svg";
 import Whatsapp from "./../Icons/whatsapp.svg";
 
 export default function Footer({ nav, behave }) {
