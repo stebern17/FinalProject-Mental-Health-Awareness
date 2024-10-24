@@ -65,7 +65,6 @@ export default function LoginBlock() {
 
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const username = storedUser?.name; // Use 'name' for the username
-  const avatar = storedUser?.avatar; // Get avatar from localStorage
 
   return (
     <>

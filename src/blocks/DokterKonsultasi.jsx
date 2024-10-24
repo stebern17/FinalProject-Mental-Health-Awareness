@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Splide from "@splidejs/splide";
+import "@splidejs/splide/dist/css/splide.min.css"; // Import Splide styles
 import DokterCardKonsultasi from "../components/DokterCardKonsultasi";
 
 export default function DokterKonsultasi() {
@@ -30,16 +32,42 @@ export default function DokterKonsultasi() {
     },
   ];
 
+  useEffect(() => {
+    const splide = new Splide(".splide", {
+      type: "loop",
+      perPage: 1,
+      pagination: false,
+      breakpoints: {
+        768: {
+          perPage: 1,
+          gap: "1rem",
+        },
+      },
+    });
+
+    splide.mount();
+
+    return () => {
+      splide.destroy();
+    };
+  }, []);
+
   return (
-    <div className="w-full overflow-y-auto py-3 px-4 max-h-[58vh]">
-      <div className="flex gap-6 w-max snap-x">
-        {psikologData.map((psikolog, index) => (
-          <DokterCardKonsultasi
-            key={index}
-            dokterName={psikolog.dokterName}
-            deskripsi={psikolog.deskripsi}
-          />
-        ))}
+    <div className="w-full overflow-y-auto py-3 px-4 h-max md:max-h-[58vh]">
+      {/* Splide Container */}
+      <div className="splide">
+        <div className="splide__track">
+          <div className="splide__list">
+            {psikologData.map((psikolog, index) => (
+              <div className="splide__slide" key={index}>
+                <DokterCardKonsultasi
+                  dokterName={psikolog.dokterName}
+                  deskripsi={psikolog.deskripsi}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

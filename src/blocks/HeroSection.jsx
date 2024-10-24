@@ -40,8 +40,9 @@ export default function HeroSection() {
             initial="hidden"
             animate={textVisible ? "visible" : "hidden"}
             transition={{ duration: 1 }}
+            className="order-2 md:order-1"
           >
-            <div className="text-center md:text-left space-y-6">
+            <div className="text-center md:text-left space-y-6 1">
               <h1 className="text-4xl md:text-5xl text-white font-bold leading-tight">
                 SAFE YOUR SELF WITH US!
               </h1>
@@ -63,11 +64,12 @@ export default function HeroSection() {
             initial="hidden"
             animate={heroimgVisible ? "visible" : "hidden"}
             transition={{ duration: 1 }}
+            className="order-1 before:md:order-2"
           >
             <img
               src="/HeroImage.svg"
               alt="HeroImage"
-              className="rounded-lg w-full h-auto object-cover shadow-md"
+              className="rounded-lg w-full h-auto object-cover shadow-md "
             />
           </motion.div>
         </div>

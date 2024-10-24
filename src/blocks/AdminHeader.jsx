@@ -18,7 +18,7 @@ export default function AdminHeader() {
 
   return (
     <header className="bg-[#16423C] p-4 shadow-md max-h-[15vh] mb-2">
-      <div className="container mx-auto grid grid-cols-3 items-center gap-4">
+      <div className="container mx-auto grid grid-cols-2 md:grid-cols-3 items-center gap-4">
         <Link to="/admin" className="flex justify-start">
           <img
             src="/PageLogo.png"
@@ -27,7 +27,8 @@ export default function AdminHeader() {
           />
         </Link>
 
-        <nav className="flex justify-center items-center gap-6 text-white text-sm md:text-base font-medium">
+        {/* Navbar for larger screens */}
+        <nav className="hidden md:flex justify-center items-center gap-6 text-white text-sm md:text-base font-medium">
           <ul className="flex space-x-10">
             <li>
               <Link
@@ -64,6 +65,7 @@ export default function AdminHeader() {
           </ul>
         </nav>
 
+        {/* User and notifications section with navigation in the avatar dropdown for small screens */}
         <ul className="flex justify-end items-center gap-4 text-white text-xs md:text-sm font-medium">
           <li className="transition duration-200 cursor-pointer">
             <Dropdown
@@ -91,6 +93,7 @@ export default function AdminHeader() {
             </Dropdown>
           </li>
 
+          {/* Avatar Dropdown */}
           <li className="transition duration-200 cursor-pointer">
             <Dropdown
               arrowIcon={false}
@@ -102,6 +105,40 @@ export default function AdminHeader() {
                   Hi There, {username}
                 </span>
               </Dropdown.Header>
+
+              {/* Navigation links in the Avatar Dropdown for small screens */}
+              <div className="block md:hidden">
+                <Dropdown.Item>
+                  <Link to="/admin" className="block text-sm text-gray-700">
+                    Dashboard
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link
+                    to="/manage-konsultasi"
+                    className="block text-sm text-gray-700"
+                  >
+                    Manage Konsultasi
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link
+                    to="/write-news"
+                    className="block text-sm text-gray-700"
+                  >
+                    Write News
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link
+                    to="/testimoni-admin"
+                    className="block text-sm text-gray-700"
+                  >
+                    Testimoni
+                  </Link>
+                </Dropdown.Item>
+              </div>
+
               <Dropdown.Item onClick={() => setShowModal(true)}>
                 Sign out
               </Dropdown.Item>
@@ -109,6 +146,7 @@ export default function AdminHeader() {
           </li>
         </ul>
       </div>
+
       <LogoutModal
         showModal={showModal}
         setShowModal={setShowModal}

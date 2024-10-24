@@ -22,16 +22,10 @@ export default function PertolonganTerdekat() {
   return (
     <UserLayout>
       <div className="container mb-1">
-        <motion.div
-          variants={fadeInLeft}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 1 }}
-        ></motion.div>
         <h1 className="text-3xl font-bold mt-1 text-center text-[#16423C]">
           Pertolongan Terdekat
         </h1>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
           <motion.div
             variants={fadeInLeft}
             initial="hidden"
@@ -58,7 +52,7 @@ export default function PertolonganTerdekat() {
             initial="hidden"
             animate="visible"
             transition={{ duration: 1 }}
-            className="col-span-2 mx-auto"
+            className="md:col-span-2 md:w-[100%] mx-auto"
           >
             <MapSection />
           </motion.div>

@@ -71,26 +71,28 @@ export default function KonsultasiUser() {
           </motion.div>
         </div>
 
-        <div className="fixed bottom-5 left-0 w-full py-4 flex justify-center gap-10">
+        <div className="md:fixed bottom-5 left-0 w-full py-4 flex justify-center gap-10">
           {step > 0 && (
             <DarkButton
               onClick={handlePrevStep}
-              className={"px-4 py-2 rounded-3xl w-[20%] shadow-xl"}
+              className={"px-4 py-2 rounded-3xl w-max md:w-[20%] shadow-xl"}
               Title={"Kembali"}
             />
           )}
           {step === 2 && (
-            <Link to="/done" className="flex justify-center w-[20%]">
-              <DarkButton
-                className="px-4 py-2 rounded-3xl w-full shadow-xl"
-                Title={"Selesai"}
-              />
-            </Link>
+            <div className="flex justify-center w-max md:w-[20%]">
+              <Link to="/done" className="w-full">
+                <DarkButton
+                  className={"px-4 py-2 rounded-3xl w-full shadow-xl"}
+                  Title={"Selesai"}
+                />
+              </Link>
+            </div>
           )}
           {step < 2 && (
             <DarkButton
               onClick={handleNextStep}
-              className={"px-4 py-2 rounded-3xl w-[20%] shadow-xl"}
+              className={"px-4 py-2 rounded-3xl w-max md:w-[20%] shadow-xl"}
               Title={"Selanjutnya"}
             />
           )}

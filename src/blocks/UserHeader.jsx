@@ -18,7 +18,7 @@ export default function UserHeader() {
 
   return (
     <header className="bg-[#16423C] p-4 shadow-md max-h-[15vh]">
-      <div className="container mx-auto grid grid-cols-3 items-center gap-4">
+      <div className="container mx-auto grid grid-cols-2 md:grid-cols-3 items-center gap-4">
         <Link to="/user" className="flex justify-start">
           <img
             src="/PageLogo.png"
@@ -27,7 +27,7 @@ export default function UserHeader() {
           />
         </Link>
 
-        <nav className="flex justify-center items-center gap-4 text-white text-sm md:text-base font-medium">
+        <nav className="hidden md:flex justify-center items-center gap-6 text-white text-sm md:text-base font-medium">
           <ul className="flex space-x-4">
             <li>
               <Link
@@ -102,6 +102,34 @@ export default function UserHeader() {
                   Hi There, {username}
                 </span>
               </Dropdown.Header>
+              <div className="block md:hidden">
+                <Dropdown.Item>
+                  <Link to="/user" className="block text-sm text-gray-700">
+                    Dashboard
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link
+                    to="/konsultasi"
+                    className="block text-sm text-gray-700"
+                  >
+                    Konsultasi
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link
+                    to="/pertolongan-terdekat"
+                    className="block text-sm text-gray-700"
+                  >
+                    Pertolongan Terdekat
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/testimoni" className="block text-sm text-gray-700">
+                    Testimoni
+                  </Link>
+                </Dropdown.Item>
+              </div>
               <Dropdown.Item onClick={() => setShowModal(true)}>
                 Sign out
               </Dropdown.Item>
