@@ -12,7 +12,13 @@ export default function KonsultasiUser() {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  // Define animation variants
+  // Form state
+  const [formData, setFormData] = useState({
+    keluhan: "",
+    domisili: "",
+    dokter: "", // Store the selected doctor here
+  });
+
   const variants = {
     enter: (direction) => ({
       opacity: 0,
@@ -39,6 +45,23 @@ export default function KonsultasiUser() {
     setStep((prevStep) => (prevStep > 0 ? prevStep - 1 : prevStep));
   };
 
+  // Handle form data change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Function to set selected doctor
+  const handleSelectDokter = (dokterName) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      dokter: dokterName, // Update selected doctor
+    }));
+  };
+
   return (
     <KonsultasiLayout>
       <div className="container overflow-hidden">
@@ -57,17 +80,27 @@ export default function KonsultasiUser() {
 
           {/* Step Transition */}
           <motion.div
-            key={step} // This key triggers the animation on step change
+            key={step}
             variants={variants}
             initial="enter"
             animate="center"
             exit="exit"
-            custom={direction} // Use the direction state for custom prop
+            custom={direction}
             transition={{ duration: 0.5 }}
           >
-            {step === 0 && <UserKonsultasi />}
-            {step === 1 && <DokterKonsultasi />}
-            {step === 2 && <PaymentSection />}
+            {step === 0 && (
+              <UserKonsultasi formData={formData} onChange={handleChange} />
+            )}
+            {step === 1 && (
+              <DokterKonsultasi
+                formData={formData}
+                onChange={handleChange}
+                onSelectDokter={handleSelectDokter} // Pass the select handler
+              />
+            )}
+            {step === 2 && (
+              <PaymentSection formData={formData} onChange={handleChange} />
+            )}
           </motion.div>
         </div>
 
@@ -75,16 +108,16 @@ export default function KonsultasiUser() {
           {step > 0 && (
             <DarkButton
               onClick={handlePrevStep}
-              className={"px-4 py-2 rounded-3xl w-max md:w-[20%] shadow-xl"}
-              Title={"Kembali"}
+              className="px-4 py-2 rounded-3xl w-max md:w-[20%] shadow-xl"
+              Title="Kembali"
             />
           )}
           {step === 2 && (
             <div className="flex justify-center w-max md:w-[20%]">
               <Link to="/done" className="w-full">
                 <DarkButton
-                  className={"px-4 py-2 rounded-3xl w-full shadow-xl"}
-                  Title={"Selesai"}
+                  className="px-4 py-2 rounded-3xl w-full shadow-xl"
+                  Title="Selesai"
                 />
               </Link>
             </div>
@@ -92,8 +125,8 @@ export default function KonsultasiUser() {
           {step < 2 && (
             <DarkButton
               onClick={handleNextStep}
-              className={"px-4 py-2 rounded-3xl w-max md:w-[20%] shadow-xl"}
-              Title={"Selanjutnya"}
+              className="px-4 py-2 rounded-3xl w-max md:w-[20%] shadow-xl"
+              Title="Selanjutnya"
             />
           )}
         </div>

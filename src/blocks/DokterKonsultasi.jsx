@@ -1,74 +1,110 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Splide from "@splidejs/splide";
 import "@splidejs/splide/dist/css/splide.min.css"; // Import Splide styles
 import DokterCardKonsultasi from "../components/DokterCardKonsultasi";
 
 export default function DokterKonsultasi() {
-  const psikologData = [
-    {
-      dokterName: "Dr. Maya Anindya, M.Psi",
-      deskripsi:
-        "Psikolog klinis dengan spesialisasi terapi kognitif dan perilaku. Berpengalaman lebih dari 10 tahun dalam penanganan kecemasan dan stres.",
-    },
-    {
-      dokterName: "Dr. Reza Alamsyah, M.Psi",
-      deskripsi:
-        "Ahli dalam psikologi anak dan remaja, berfokus pada perkembangan emosional dan sosial anak-anak dengan gangguan perilaku.",
-    },
-    {
-      dokterName: "Dr. Siti Nurhayati, M.Psi",
-      deskripsi:
-        "Spesialis dalam konseling keluarga dan pernikahan, membantu pasangan dan keluarga mengatasi konflik dan meningkatkan komunikasi.",
-    },
-    {
-      dokterName: "Dr. Budi Santoso, M.Psi",
-      deskripsi:
-        "Psikolog dengan fokus pada penanganan depresi dan gangguan suasana hati melalui terapi kognitif dan mindfulness.",
-    },
-    {
-      dokterName: "Dr. Intan Permatasari, M.Psi",
-      deskripsi:
-        "Ahli dalam psikoterapi untuk penanganan trauma, berpengalaman dalam membantu pasien mengatasi gangguan stres pasca-trauma (PTSD).",
-    },
-  ];
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [selectedDokter, setSelectedDokter] = useState(null);
+  const [psikologData, setPsikologData] = useState([]);
+
+  const handleSelectDokter = (dokterName) => {
+    setSelectedDokter(dokterName);
+  };
 
   useEffect(() => {
-    const splide = new Splide(".splide", {
-      type: "loop",
-      perPage: 1,
-      pagination: false,
-      breakpoints: {
-        768: {
-          perPage: 1,
-          gap: "1rem",
-        },
-      },
-    });
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-    splide.mount();
+    window.addEventListener("resize", handleResize);
+
+    // Fetch data from the API
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://6718e1f57fc4c5ff8f4b832e.mockapi.io/api/MentalHealthCare/Konselor"
+        );
+        const data = await response.json();
+        setPsikologData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+
+    // Initialize Splide only if in mobile view
+    if (isMobile) {
+      const splide = new Splide(".splide", {
+        type: "loop",
+        perPage: 1,
+        pagination: false,
+        breakpoints: {
+          768: {
+            perPage: 1,
+            gap: "1rem",
+          },
+        },
+      });
+
+      splide.mount();
+
+      return () => {
+        splide.destroy();
+      };
+    }
 
     return () => {
-      splide.destroy();
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isMobile]);
+
+  // Retrieve domisili from local storage and filter data
+  const selectedDomisili = localStorage.getItem("selectedDomisili");
+  const filteredPsikologData = selectedDomisili
+    ? psikologData.filter((psikolog) => psikolog.domisili === selectedDomisili)
+    : psikologData;
 
   return (
-    <div className="w-full overflow-y-auto py-3 px-4 h-max md:max-h-[58vh]">
-      {/* Splide Container */}
-      <div className="splide">
-        <div className="splide__track">
-          <div className="splide__list">
-            {psikologData.map((psikolog, index) => (
-              <div className="splide__slide" key={index}>
-                <DokterCardKonsultasi
-                  dokterName={psikolog.dokterName}
-                  deskripsi={psikolog.deskripsi}
-                />
-              </div>
-            ))}
+    <div
+      className={`w-full py-3 px-4 h-max md:max-h-[58vh] ${
+        isMobile ? "overflow-hidden" : "overflow-x-auto"
+      }`}
+    >
+      {/* Splide Container for Mobile */}
+      {isMobile ? (
+        <div className="splide">
+          <div className="splide__track">
+            <div className="splide__list">
+              {filteredPsikologData.map((psikolog, index) => (
+                <div className="splide__slide" key={index}>
+                  <DokterCardKonsultasi
+                    dokterName={psikolog.name}
+                    deskripsi={psikolog.pesanKesan} // Adjust this if you have a different description
+                    selected={selectedDokter === psikolog.name} // Check if this doctor is selected
+                    onSelect={() => handleSelectDokter(psikolog.name)} // Handle selection
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="flex gap-4 overflow-x-auto w-max">
+          {filteredPsikologData.map((psikolog, index) => (
+            <DokterCardKonsultasi
+              key={index}
+              dokterName={psikolog.name}
+              domisili={psikolog.domisili} // Adjust this if you have a different location
+              spesialis={psikolog.spesialis} // Adjust this if you have a different specialization
+              deskripsi={psikolog.pesanKesan} // Adjust this if you have a different description
+              selected={selectedDokter === psikolog.name} // Check if this doctor is selected
+              onSelect={() => handleSelectDokter(psikolog.name)} // Handle selection
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

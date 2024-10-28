@@ -34,7 +34,7 @@ export default function TulisBeritaBlock() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-3xl bg-white rounded-lg shadow-lg">
+    <div className="container mx-auto p-6 max-w-3xl bg-white rounded-lg shadow-lg mb-5 md:mb-0">
       {errorMessage && (
         <p className="text-red-500 text-center mb-4">{errorMessage}</p>
       )}

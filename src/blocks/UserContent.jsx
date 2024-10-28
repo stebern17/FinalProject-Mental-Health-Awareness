@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import NewsCard from "../components/NewsCard";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useState } from "react";
 
 export default function UserContent() {
   const [value, onChange] = useState(new Date());

@@ -10,7 +10,7 @@ export default function Footer({ nav, behave }) {
 
   return (
     <footer className="bg-[#16423C] mt-auto p-4">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+      <div className="container mx-auto grid grid-cols-2 md:grid-cols-3 items-center gap-4">
         <div className="flex justify-center md:justify-start">
           <Link
             to={nav}

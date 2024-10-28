@@ -1,23 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dropdown, Datepicker } from "flowbite-react";
 
-export default function UserKonsultasi() {
-  const [selectedDomisili, setSelectedDomisili] = useState(null); // State for selected domisili
+export default function UserKonsultasi({ onChange, formData }) {
+  const [selectedDomisili, setSelectedDomisili] = useState(formData.domisili); // Initialize with formData
+  const [namaDomisili, setNamaDomisili] = useState([]); // State to hold fetched domisili data
 
-  const namaDaerah = [
-    { nama: "Jakarta" },
-    { nama: "Bandung" },
-    { nama: "Bekasi" },
-    { nama: "Bogor" },
-    { nama: "Depok" },
-    { nama: "Tangerang" },
-    { nama: "Banten" },
-    { nama: "Bali" },
-    { nama: "Yogyakarta" },
-  ];
+  // Fetch domisili data from API
+  useEffect(() => {
+    const fetchDomisiliData = async () => {
+      try {
+        const response = await fetch(
+          "https://6718e1f57fc4c5ff8f4b832e.mockapi.io/api/MentalHealthCare/Konselor"
+        );
+        const data = await response.json();
 
-  const handleDomisiliSelect = (daerah) => {
-    setSelectedDomisili(daerah);
+        // Extract unique domisili values
+        const uniqueDomisili = Array.from(
+          new Set(data.map((item) => item.domisili))
+        ).map((domisili) => ({ nama: domisili }));
+
+        setNamaDomisili(uniqueDomisili); // Set unique domisili data
+      } catch (error) {
+        console.error("Error fetching domisili data:", error);
+      }
+    };
+
+    fetchDomisiliData();
+  }, []); // Empty dependency array means this runs once on mount
+
+  const handleDomisiliSelect = (domisili) => {
+    setSelectedDomisili(domisili);
+    onChange({ target: { name: "domisili", value: domisili } }); // Update formData when domisili is selected
+    localStorage.setItem("selectedDomisili", domisili); // Save to local storage
   };
 
   return (
@@ -39,8 +53,11 @@ export default function UserKonsultasi() {
         </label>
         <textarea
           id="keluhan"
+          name="keluhan" // Add name attribute
           className="w-full h-32 p-2 mb-4 border border-[#C4DAD2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6A9C89] shadow-md"
           placeholder="Masukan keluhanmu disini ..."
+          onChange={onChange} // Maintain onChange for keluhan
+          value={formData.keluhan} // Maintain value from formData
         ></textarea>
 
         <div className="mb-5">
@@ -54,12 +71,12 @@ export default function UserKonsultasi() {
               boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
             }}
           >
-            {namaDaerah.map((daerah, index) => (
+            {namaDomisili.map((domisili, index) => (
               <Dropdown.Item
                 key={index}
-                onClick={() => handleDomisiliSelect(daerah.nama)}
+                onClick={() => handleDomisiliSelect(domisili.nama)} // Handle selection
               >
-                {daerah.nama}
+                {domisili.nama}
               </Dropdown.Item>
             ))}
           </Dropdown>

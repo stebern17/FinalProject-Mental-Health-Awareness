@@ -2,16 +2,34 @@ import React from "react";
 import DarkButton from "./DarkButton";
 import { Avatar } from "flowbite-react";
 
-export default function DokterCardKonsultasi({ dokterName, deskripsi }) {
+export default function DokterCardKonsultasi({
+  dokterName,
+  deskripsi,
+  selected,
+  onSelect,
+  spesialis,
+  domisili,
+}) {
   return (
-    <div className="bg-white p-6 flex flex-col justify-between rounded-xl shadow-lg h-[70vh] w-full md:w-[20vw] mx-auto">
+    <div className="bg-white p-6 flex flex-col rounded-xl justify-between shadow-lg h-[50vh] w-full md:max-w-[20vw] mx-auto mb-5">
       <div className="flex gap-4 items-center mb-4">
         <Avatar rounded size="lg" />
-        <h3 className="font-semibold text-xl">{dokterName}</h3>
+        <div>
+          <h3 className="font-semibold text-xl">{dokterName}</h3>
+          <p className="text-gray-600 text-sm font-bold">{domisili}</p>
+        </div>
       </div>
-      <p className="text-gray-600 text-sm mb-6 flex-1">{deskripsi}</p>
+      <div>
+        <p className="text-gray-600 text-sm font-bold">{spesialis}</p>
+
+        <p className="text-gray-600 text-sm">{deskripsi}</p>
+      </div>
+
       <DarkButton
-        className={"px-4 py-2 rounded-full mt-auto"}
+        onClick={onSelect}
+        className={`px-4 py-2 rounded-full ${
+          selected ? "bg-green-500" : "bg-[#16423C]"
+        }`}
         Title={"Pilih"}
       />
     </div>

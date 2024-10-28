@@ -20,7 +20,7 @@ export default function KonsultasiCard({
           <p className="text-sm font-medium">{namaDokter}</p>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-sm font-medium">Status</p>
+          <p className="hidden md:block text-sm font-medium">Status:</p>
           <p className="text-sm">{progress}</p>
         </div>
       </div>

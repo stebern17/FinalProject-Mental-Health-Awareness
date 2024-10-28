@@ -23,35 +23,43 @@ export default function TabelKonsultasi({ konsultasi = [], bgStats }) {
   };
 
   return (
-    <div>
-      <Table className="text-center px-4 py-2 text-[#16423C] ">
-        <TableHead className="text-[#16423C]">
-          <Table.HeadCell>Nama</Table.HeadCell>
-          <Table.HeadCell>Tanggal</Table.HeadCell>
-          <Table.HeadCell>Domisili</Table.HeadCell>
-          <Table.HeadCell>Dokter</Table.HeadCell>
-          <Table.HeadCell>Status</Table.HeadCell>
-          <Table.HeadCell>Aksi</Table.HeadCell>
+    <div className="overflow-x-auto">
+      <Table className="min-w-full text-center text-[#16423C] bg-white">
+        <TableHead className="text-[#16423C] bg-white">
+          <Table.HeadCell className="whitespace-nowrap">Nama</Table.HeadCell>
+          <Table.HeadCell className="whitespace-nowrap">Tanggal</Table.HeadCell>
+          <Table.HeadCell className="whitespace-nowrap">
+            Domisili
+          </Table.HeadCell>
+          <Table.HeadCell className="whitespace-nowrap">Dokter</Table.HeadCell>
+          <Table.HeadCell className="whitespace-nowrap">Status</Table.HeadCell>
+          <Table.HeadCell className="whitespace-nowrap">Aksi</Table.HeadCell>
         </TableHead>
         <TableBody>
           {konsultasi.map((konsultasiItem, index) => (
-            <Table.Row key={index} className="hover:bg-[#C4DAD2]">
-              <Table.Cell className="font-bold">
+            <Table.Row key={index} className="hover:bg-[#C4DAD2] bg-white">
+              <Table.Cell className="font-bold bg-white">
                 {konsultasiItem.nama}
               </Table.Cell>
-              <Table.Cell>{konsultasiItem.tanggal}</Table.Cell>
-              <Table.Cell>{konsultasiItem.domisili}</Table.Cell>
-              <Table.Cell>{konsultasiItem.namaDokter}</Table.Cell>
-              <Table.Cell>
+              <Table.Cell className="bg-white">
+                {konsultasiItem.tanggal}
+              </Table.Cell>
+              <Table.Cell className="bg-white">
+                {konsultasiItem.domisili}
+              </Table.Cell>
+              <Table.Cell className="bg-white">
+                {konsultasiItem.namaDokter}
+              </Table.Cell>
+              <Table.Cell className="bg-white">
                 <div
-                  className={`px-4 py-2 text-sm font-semibold rounded-lg w-[60%] mx-auto ${bgStats(
+                  className={`px-4 py-2 text-sm font-semibold rounded-lg w-max md:w-[60%] mx-auto ${bgStats(
                     konsultasiItem.statusKonsultasi
                   )}`}
                 >
                   {konsultasiItem.statusKonsultasi}
                 </div>
               </Table.Cell>
-              <Table.Cell>
+              <Table.Cell className="bg-white">
                 <DarkButton
                   Title="Ubah Status"
                   className="rounded-lg text-white"
