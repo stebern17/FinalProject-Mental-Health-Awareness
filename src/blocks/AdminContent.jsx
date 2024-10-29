@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -6,6 +6,20 @@ import KonsultasiCard from "../components/KonsultasiCard";
 
 export default function AdminContent() {
   const [value, onChange] = useState(new Date());
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const konsultasi = [
     {
@@ -68,7 +82,7 @@ export default function AdminContent() {
             options={chartData.options}
             series={chartData.series}
             type="donut"
-            width="100%" // Changed to 100% for better responsiveness
+            width={isMobile ? "100%" : "140%"} // Set width based on screen size
           />
         </div>
 
