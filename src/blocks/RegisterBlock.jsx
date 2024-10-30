@@ -1,5 +1,4 @@
 import React from "react";
-import HeroImage from "./../../public/HeroImage.svg";
 import Apple from "./../Icons/apple.svg";
 import Google from "./../Icons/google.svg";
 import DarkButton from "../components/DarkButton";
