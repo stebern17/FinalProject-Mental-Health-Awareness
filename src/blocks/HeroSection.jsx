@@ -67,7 +67,7 @@ export default function HeroSection() {
             className="order-1 before:md:order-2"
           >
             <img
-              src="/HeroImage.svg"
+              src="/HeroImage.png"
               alt="HeroImage"
               className="rounded-lg w-full h-auto object-cover shadow-md "
             />
